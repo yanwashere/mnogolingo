@@ -1,0 +1,172 @@
+.flashcard-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.flashcard-progress {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.flashcard {
+  perspective: 1000px;
+  cursor: pointer;
+  height: 300px;
+  position: relative;
+}
+
+.flashcard.learned .flashcard-front {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.flashcard-front {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.flashcard-back {
+  background: white;
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+.flashcard-chinese {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.flashcard-pinyin {
+  font-size: 18px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.flashcard-translation {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.flashcard-example {
+  font-size: 13px;
+  margin-top: 15px;
+  opacity: 0.8;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.flip-hint {
+  position: absolute;
+  bottom: 20px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.flashcard-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.mark-buttons {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.mark-btn {
+  padding: 10px 20px;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  color: white;
+}
+
+.mark-btn.forgotten {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mark-btn.learned {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mark-btn.forgotten.active {
+  background: #e74c3c;
+}
+
+.mark-btn.learned.active {
+  background: #27ae60;
+}
+
+.mark-btn:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .flashcard {
+    height: 250px;
+  }
+
+  .flashcard-chinese {
+    font-size: 36px;
+  }
+
+  .flashcard-controls {
+    flex-direction: column;
+  }
+
+  .nav-btn,
+  .mark-buttons {
+    width: 100%;
+  }
+}
