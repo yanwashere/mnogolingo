@@ -34,8 +34,8 @@ export default function Auth({ onAuthSuccess }) {
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h1>多语言学习者</h1>
-        <p className="subtitle">Китайские идиомы</p>
+        <h1>MnogoLingo</h1>
+        <p className="subtitle">Учи китайские идиомы</p>
 
         <form onSubmit={handleSubmit}>
           <input

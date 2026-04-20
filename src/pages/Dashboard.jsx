@@ -47,7 +47,7 @@ export default function Dashboard() {
     <div className="dashboard">
       <header className="dashboard-header">
         <div className="header-title">
-          <h1>多语言学习者</h1>
+          <h1>MnogoLingo</h1>
           <p>Китайские идиомы</p>
         </div>
         <div className="header-user">
