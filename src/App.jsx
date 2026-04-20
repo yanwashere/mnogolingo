@@ -36,7 +36,7 @@ export default function App() {
   }
 
   return (
-    <Router>
+    <Router basename="/mnogolingo">
       <Routes>
         <Route
           path="/"
