@@ -3,7 +3,7 @@ import { authService } from '../utils/authService';
 import '../styles/Auth.css';
 
 export default function Auth({ onAuthSuccess }) {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState('');
@@ -16,8 +16,8 @@ export default function Auth({ onAuthSuccess }) {
 
     try {
       const { error: authError } = isSignUp
-        ? await authService.signup(email, password)
-        : await authService.login(email, password);
+        ? await authService.signup(username, password)
+        : await authService.login(username, password);
 
       if (authError) {
         setError(authError.message);
@@ -39,10 +39,10 @@ export default function Auth({ onAuthSuccess }) {
 
         <form onSubmit={handleSubmit}>
           <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            placeholder="Имя пользователя"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
           <input
