@@ -57,4 +57,16 @@ export const idiomsService = {
       .eq('user_id', userId);
     return { data, error };
   },
+
+  async addIdioms(userId, idioms) {
+    const rows = idioms.map(({ chineseText, pinyin, translation, example }) => ({
+      user_id: userId,
+      chinese_text: chineseText,
+      pinyin,
+      translation,
+      example: example || null,
+    }));
+    const { data, error } = await supabase.from('idioms').insert(rows).select();
+    return { data, error };
+  },
 };
