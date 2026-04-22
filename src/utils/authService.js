@@ -1,17 +1,19 @@
 import { supabase } from './supabaseClient';
 
+const toEmail = (username) => `${username.toLowerCase().trim()}@mnogolingo.local`;
+
 export const authService = {
-  async signup(email, password) {
+  async signup(username, password) {
     const { data, error } = await supabase.auth.signUp({
-      email,
+      email: toEmail(username),
       password,
     });
     return { data, error };
   },
 
-  async login(email, password) {
+  async login(username, password) {
     const { data, error } = await supabase.auth.signInWithPassword({
-      email,
+      email: toEmail(username),
       password,
     });
     return { data, error };
