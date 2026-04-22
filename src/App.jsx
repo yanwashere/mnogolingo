@@ -13,9 +13,14 @@ export default function App() {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const { user: currentUser } = await authService.getCurrentUser();
-      setUser(currentUser);
-      setLoading(false);
+      try {
+        const { user: currentUser } = await authService.getCurrentUser();
+        setUser(currentUser);
+      } catch (e) {
+        console.error('Auth check failed:', e);
+      } finally {
+        setLoading(false);
+      }
     };
 
     checkAuth();
