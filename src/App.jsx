@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { authService } from './utils/authService';
+import { supabase } from './utils/supabaseClient';
 import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import Idioms from './pages/Idioms';
@@ -10,6 +11,15 @@ import './App.css';
 export default function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  if (!supabase) {
+    return (
+      <div style={{ padding: '2rem', fontFamily: 'monospace', color: 'red' }}>
+        <h2>Ошибка конфигурации</h2>
+        <p>Supabase не инициализирован. Проверь переменные окружения VITE_SUPABASE_URL и VITE_SUPABASE_ANON_KEY в GitHub Secrets.</p>
+      </div>
+    );
+  }
 
   useEffect(() => {
     const checkAuth = async () => {
